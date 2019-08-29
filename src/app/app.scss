@@ -17,4 +17,18 @@
 
 ion-content{
     font-size: 1.8rem;
+    background: #67CBE6 !important;
 }
+
+.text-input::-moz-placeholder {
+    color: white;
+  }
+  
+.text-input:-ms-input-placeholder {
+    color: white;
+  }
+  
+.text-input::-webkit-input-placeholder {
+    text-indent: 0;
+    color: white;
+  }

@@ -6,23 +6,32 @@
 
 <ion-content padding>
   <form [formGroup] = "formGroup" (ngSubmit) = "signUpUser(); $event.preventDefault()">
-    <ion-item >
-      <ion-input type="text" formControlName="nome">Nome Completo</ion-input>
-    </ion-item>
-    <ion-item>
-        <ion-input type="text" formControlName="idLegal"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label>Data de Nascimento</ion-label>
-      <ion-datetime displayFormat="DD/MM/YYYY" placeholder="Selecione a data" formControlName="dataNascimento"></ion-datetime>
-    </ion-item>
-    <ion-item>
-      <ion-input type="text" formControlName="telefone">Telefone</ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-input type="email" formControlName="email"></ion-input>
-    </ion-item>
-
-    <button ion-button round block type="submit">Registrar</button>
+      <ion-col>
+        <ion-input placeholder="Nome Completo" type="text" formControlName="nome"></ion-input>
+        <br>
+        <ion-input placeholder= "CPF" type="text" formControlName="idLegal"></ion-input>
+        <br>
+        <ion-datetime displayFormat="DD/MM/YYYY" placeholder="Selecione a data" formControlName="dataNascimento"></ion-datetime>
+        <br>
+        <ion-input placeholder="Telefone" type="number" formControlName="telefone"></ion-input>
+        <br>
+        <ion-input placeholder="Email" type="email" formControlName="email"></ion-input>
+        <br>
+        <ion-input placeholder="CEP" type="number" formControlName="cep" (ionBlur) = "buscaCep()"></ion-input>
+        <br>
+        <ion-input placeholder="Rua" type="text" formControlName="rua" disabled></ion-input>
+        <br>
+        <ion-input placeholder="Bairro" type="text" formControlName="bairro" disabled></ion-input>
+        <br>
+        <ion-input placeholder="Nr" type="number" formControlName="numero" disabled></ion-input>
+        <br>
+        <ion-input placeholder="Complemento" type="text" formControlName="complemento"></ion-input>
+        <br>
+        <ion-input placeholder="Cidade" type="text" formControlName="cidade" disabled></ion-input>
+        <br>
+        <ion-input placeholder="Estado" type="text" formControlName="uf" disabled></ion-input>
+        <br><br>
+        <button ion-button round block type="submit" >Registrar</button>
+      </ion-col>  
   </form>
 </ion-content>

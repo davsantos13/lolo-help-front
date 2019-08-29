@@ -1,3 +1,23 @@
 page-signup {
+    ion-input {
+        background: #67CBE6;
+        border-radius: 20px;
+        border:3px solid lightyellow;
+        color: lightyellow;
+    }
+
+    ion-datetime {
+        background: #67CBE6;
+        border-radius: 20px;
+        border:3px solid lightyellow;
+        color: lightyellow;
+    }
+
+    
+    .button {
+        position: static;
+        bottom: 10px;
+        left: 0px;
+    }
     
 }
