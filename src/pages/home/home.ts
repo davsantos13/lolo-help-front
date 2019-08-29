@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, IonicPage } from 'ionic-angular';
+import { SignupPage } from '../signup/signup';
 
 @IonicPage()
 @Component({
@@ -10,6 +11,10 @@ export class HomePage {
 
   constructor(public navCtrl: NavController) {
 
+  }
+
+  showPageSignUp(){
+    this.navCtrl.push('SignupPage');
   }
 
 }

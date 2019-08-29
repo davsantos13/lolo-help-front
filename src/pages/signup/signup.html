@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Cadastre-se</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <form [formGroup] = "formGroup" (ngSubmit) = "signUpUser(); $event.preventDefault()">
+    <ion-item >
+      <ion-input type="text" formControlName="nome">Nome Completo</ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-input type="text" formControlName="idLegal"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Data de Nascimento</ion-label>
+      <ion-datetime displayFormat="DD/MM/YYYY" placeholder="Selecione a data" formControlName="dataNascimento"></ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-input type="text" formControlName="telefone">Telefone</ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input type="email" formControlName="email"></ion-input>
+    </ion-item>
+
+    <button ion-button round block type="submit">Registrar</button>
+  </form>
+</ion-content>
