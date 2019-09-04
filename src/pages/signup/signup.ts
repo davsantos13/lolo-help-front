@@ -1,7 +1,10 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { CepService } from '../../services/cep.service';
+import { ClienteService } from '../../services/cliente.service';
+import { Cliente } from '../../domain/cliente';
+import { Endereco } from '../../domain/endereco';
 
 
 @IonicPage()
@@ -12,12 +15,16 @@ import { CepService } from '../../services/cep.service';
 export class SignupPage {
 
   formGroup: FormGroup;
+  cliente: Cliente;
+  clienteDTO: Cliente;
 
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
     public formBuilder: FormBuilder,
-    public cepService: CepService) {
+    public cepService: CepService,
+    public clienteService: ClienteService,
+    public alertCtrl: AlertController) {
 
       this.formGroup = this.formBuilder.group({
         nome: [null , [Validators.required]],
@@ -36,7 +43,30 @@ export class SignupPage {
   }
 
   signUpUser(){
-    console.log(this.formGroup.value);
+    this.clienteService.insert(this.formGroup.value)
+      .subscribe(response => {
+        this.showInsertOk();
+      }, 
+      error => {
+        console.log(error);
+      });
+  }
+
+  showInsertOk(){
+    let alert = this.alertCtrl.create({
+      title: "Sucesso",
+      message: "Cadastro efetuado com sucesso",
+      enableBackdropDismiss: false,
+      buttons: [
+        {
+          text: "OK",
+          handler: () => {
+            this.navCtrl.pop();
+          }
+        }
+      ]
+    });
+    alert.present();
   }
 
   buscaCep(){
