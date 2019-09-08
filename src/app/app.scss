@@ -20,6 +20,29 @@ ion-content{
     background: #67CBE6 !important;
 }
 
+ion-input {
+  background: #67CBE6;
+  border-radius: 20px;
+  border:3px solid lightyellow;
+  color: lightyellow;
+  padding-left: 20px;
+}
+
+ion-datetime {
+  background: #67CBE6;
+  border-radius: 20px;
+  border:3px solid lightyellow;
+  color: lightyellow;
+}
+
+
+.button {
+  position: static;
+  bottom: 10px;
+  left: 0px;
+}
+
+
 .text-input::-moz-placeholder {
     color: white;
   }
