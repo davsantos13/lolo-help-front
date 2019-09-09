@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Credenciais } from '../../domain/credenciais';
+import { AuthService } from '../../services/auth.service';
 
 @IonicPage()
 @Component({
@@ -14,11 +15,20 @@ export class LoginPage {
     senha: ""
   };
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams,
+    public auth: AuthService) {
   }
 
   login(){
-    console.log(this.credenciais);
+    this.auth.authenticate(this.credenciais)
+    .subscribe(response => {
+      console.log(response.headers.get('Authorization'));
+      this.navCtrl.setRoot('BabaPage'); 
+    }, error => {
+      
+    });
   }
 
 }

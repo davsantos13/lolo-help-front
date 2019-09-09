@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { Observable } from "rxjs/Rx";
+import { catchError } from "rxjs/operators";
 
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor{
@@ -8,22 +9,22 @@ export class ErrorInterceptor implements HttpInterceptor{
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>>{
         console.log('passou');
         return next.handle(req)
-        .catch((error, caught) => {
+        .pipe(
+            catchError(error => {
+                let errorObj = error;
+                if(errorObj.error){
+                    errorObj = errorObj.error;
+                }
+                if(!errorObj.status){
+                    errorObj = JSON.parse(errorObj.error);
+                }
 
-            let erroObj = error;
-            if (erroObj.error){
-                erroObj = erroObj.error;
-            }
+                console.log('Error detectado pelo interceptor');
+                console.log(errorObj)
 
-            if (!erroObj.status){
-                erroObj = JSON.parse(erroObj);
-            }
-
-            console.log("Erro detectado pelo interceptor");
-            console.log(erroObj);
-
-            return Observable.throw(erroObj);
-        }) as any;
+                return Observable.throw(errorObj);
+            })
+        ) as any;
     }
 }
 

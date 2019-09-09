@@ -10,6 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { CepService } from '../services/cep.service';
 import { ClienteService } from '../services/cliente.service';
 import { ErrorInterceptorProvider } from '../interceptors/error-interceptor';
+import { AuthService } from '../services/auth.service';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { ErrorInterceptorProvider } from '../interceptors/error-interceptor';
     CepService,
     ClienteService,
     ErrorInterceptorProvider,
+    AuthService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
