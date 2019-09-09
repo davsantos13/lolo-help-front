@@ -9,6 +9,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { HttpClientModule } from '@angular/common/http';
 import { CepService } from '../services/cep.service';
 import { ClienteService } from '../services/cliente.service';
+import { ErrorInterceptorProvider } from '../interceptors/error-interceptor';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { ClienteService } from '../services/cliente.service';
     SplashScreen,
     CepService,
     ClienteService,
+    ErrorInterceptorProvider,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

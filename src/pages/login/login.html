@@ -4,15 +4,15 @@
   <form>
     <div class="container">
       <div>
-        <ion-input style="width: 350px" type="text" placeholder="Email" name="email"></ion-input>
+        <ion-input style="width: 350px" type="text" placeholder="Email" [(ngModel)]="credenciais.email" name="email"></ion-input>
       </div>
       <div><br></div>
       <div>
-        <ion-input style="width: 350px" type="text" placeholder="Senha" name="senha"></ion-input>
+        <ion-input style="width: 350px" type="password" placeholder="Senha" [(ngModel)]="credenciais.senha" name="senha"></ion-input>
       </div>
 
        <button style=" color: #67CBE6;
-       font-size: 100%;" ion-button block round color="light" >Entrar</button>
+       font-size: 100%;" ion-button block round color="light" (click) = "login()">Entrar</button>
       
     </div>
   </form>

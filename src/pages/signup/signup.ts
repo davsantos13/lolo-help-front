@@ -15,7 +15,7 @@ export class SignupPage {
 
   formGroup: FormGroup;
   cliente: Cliente;
-  clienteDTO: Cliente;
+  
 
   constructor(
     public navCtrl: NavController, 
@@ -50,7 +50,7 @@ export class SignupPage {
         this.showInsertOk();
       }, 
       error => {
-        console.log(error);
+
       });
   }
 
@@ -72,7 +72,6 @@ export class SignupPage {
   }
 
   buscaCep(){
-    console.log(this.formGroup.get('endereco.cep'));
     let valueCep = this.formGroup.controls['endereco'].get('cep').value;
     let isValid = this.formGroup.controls['endereco'].get('cep').valid;
     if(isValid){
