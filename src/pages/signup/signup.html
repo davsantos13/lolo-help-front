@@ -1,9 +1,3 @@
-<ion-header>
-  <ion-navbar>
-    <ion-title>Cadastre-se</ion-title>
-  </ion-navbar>
-</ion-header>
-
 <ion-content padding>
   <form [formGroup] = "formGroup" (ngSubmit) = "signUpUser(); $event.preventDefault()">
       <ion-col>
@@ -15,21 +9,25 @@
         <br>
         <ion-input placeholder="Telefone" type="number" formControlName="telefone"></ion-input>
         <br>
-        <ion-input placeholder="Email" type="email" formControlName="email"></ion-input>
+        <ion-input placeholder="nome@email.com" type="email" formControlName="email"></ion-input>
         <br>
-        <ion-input placeholder="CEP" type="number" formControlName="cep" (ionBlur) = "buscaCep()"></ion-input>
+        <ion-input placeholder="Senha" type="password" formControlName="senha"></ion-input>
         <br>
-        <ion-input placeholder="Rua" type="text" formControlName="rua" disabled></ion-input>
-        <br>
-        <ion-input placeholder="Bairro" type="text" formControlName="bairro" disabled></ion-input>
-        <br>
-        <ion-input placeholder="Nr" type="number" formControlName="numero" disabled></ion-input>
-        <br>
-        <ion-input placeholder="Complemento" type="text" formControlName="complemento"></ion-input>
-        <br>
-        <ion-input placeholder="Cidade" type="text" formControlName="cidade" disabled></ion-input>
-        <br>
-        <ion-input placeholder="Estado" type="text" formControlName="uf" disabled></ion-input>
+        <div formGroupName="endereco">
+          <ion-input placeholder="CEP" type="number" formControlName="cep" (ionBlur) = "buscaCep()"></ion-input>
+          <br>
+          <ion-input placeholder="Rua" type="text" formControlName="rua" disabled></ion-input>
+          <br>
+          <ion-input placeholder="Bairro" type="text" formControlName="bairro" disabled></ion-input>
+          <br>
+          <ion-input placeholder="Nr" type="number" formControlName="numero" disabled></ion-input>
+          <br>
+          <ion-input placeholder="Complemento" type="text" formControlName="complemento"></ion-input>
+          <br>
+          <ion-input placeholder="Cidade" type="text" formControlName="cidade" disabled></ion-input>
+          <br>
+          <ion-input placeholder="Estado" type="text" formControlName="uf" disabled></ion-input>
+        </div>
         <br><br>
         <button ion-button round block type="submit" >Registrar</button>
       </ion-col>  

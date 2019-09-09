@@ -4,7 +4,6 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { CepService } from '../../services/cep.service';
 import { ClienteService } from '../../services/cliente.service';
 import { Cliente } from '../../domain/cliente';
-import { Endereco } from '../../domain/endereco';
 
 
 @IonicPage()
@@ -32,13 +31,16 @@ export class SignupPage {
         dataNascimento: [null, [Validators.required]],
         telefone:[null, []], 
         email: [null , [Validators.required, Validators.email]],
-        cep: [null, [Validators.required, Validators.minLength(8), Validators.maxLength(8)]],
-        rua: [null],
-        complemento: [null],
-        numero: [null],
-        bairro:[null],
-        cidade:[null, Validators.required],
-        uf: [null, Validators.required]
+        senha: [null, [Validators.required]],
+        endereco: this.formBuilder.group({
+          cep: [null, [Validators.required, Validators.minLength(8), Validators.maxLength(8)]],
+          rua: [null],
+          complemento: [null],
+          numero: [null],
+          bairro:[null],
+          cidade:[null, Validators.required],
+          uf: [null, Validators.required]
+        })
       });
   }
 
@@ -70,24 +72,24 @@ export class SignupPage {
   }
 
   buscaCep(){
-    let valueCep = this.formGroup.controls['cep'].value;
-    let isValid = this.formGroup.controls['cep'].valid;
-
+    console.log(this.formGroup.get('endereco.cep'));
+    let valueCep = this.formGroup.controls['endereco'].get('cep').value;
+    let isValid = this.formGroup.controls['endereco'].get('cep').valid;
     if(isValid){
       this.cepService.findCep(valueCep)
               .subscribe((response) => {
                   this.setDataCep(response);
-              }, error => {
-
+              }, (error) => {
+                  console.log(error);
               });
     }
   }
 
   setDataCep(data : any){
-    this.formGroup.controls['rua'].setValue(data.logradouro);
-    this.formGroup.controls['complemento'].setValue(data.complemento);
-    this.formGroup.controls['bairro'].setValue(data.bairro);
-    this.formGroup.controls['cidade'].setValue(data.localidade);
-    this.formGroup.controls['uf'].setValue(data.uf);
+    this.formGroup.controls['endereco'].get('rua').setValue(data.logradouro);
+    this.formGroup.controls['endereco'].get('complemento').setValue(data.complemento);
+    this.formGroup.controls['endereco'].get('bairro').setValue(data.bairro);
+    this.formGroup.controls['endereco'].get('cidade').setValue(data.localidade);
+    this.formGroup.controls['endereco'].get('uf').setValue(data.uf);
   }
 }
