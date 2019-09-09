@@ -24,7 +24,7 @@ export class LoginPage {
   login(){
     this.auth.authenticate(this.credenciais)
     .subscribe(response => {
-      console.log(response.headers.get('Authorization'));
+      this.auth.successfulLogin(response.headers.get('Authorization'));
       this.navCtrl.setRoot('BabaPage'); 
     }, error => {
       

@@ -26,16 +26,16 @@ export class SignupPage {
     public alertCtrl: AlertController) {
 
       this.formGroup = this.formBuilder.group({
-        nome: [null , [Validators.required]],
-        idLegal:[null, [Validators.required]],
+        nome: ['David Carlos Santos Evangelista' , [Validators.required]],
+        idLegal:['06352624103', [Validators.required]],
         dataNascimento: [null, [Validators.required]],
-        telefone:[null, []], 
-        email: [null , [Validators.required, Validators.email]],
+        telefone:['64992989801', []], 
+        email: ['david@gmail.com' , [Validators.required, Validators.email]],
         senha: [null, [Validators.required]],
         endereco: this.formBuilder.group({
           cep: [null, [Validators.required, Validators.minLength(8), Validators.maxLength(8)]],
           rua: [null],
-          complemento: [null],
+          complemento: ['Quadra 13'],
           numero: [null],
           bairro:[null],
           cidade:[null, Validators.required],
