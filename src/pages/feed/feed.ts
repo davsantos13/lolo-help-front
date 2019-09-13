@@ -1,17 +1,21 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
-
 @IonicPage()
 @Component({
-  selector: 'page-baba',
-  templateUrl: 'baba.html',
+  selector: 'page-feed',
+  templateUrl: 'feed.html',
 })
-export class BabaPage {
+export class FeedPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
-  
+  ionViewDidLoad() {
+  }
+
+  signupCrianca(){
+    this.navCtrl.push('CriancaPage', )
+  }
 
 }

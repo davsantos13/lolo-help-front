@@ -17,4 +17,8 @@ export class ClienteService{
             responseType : 'text'
         });
     }
+
+    findByEmail(email: string){ 
+       return this.http.get<Cliente>(`${API_CONFIG.baseUrl}/clientes/fetch/${email}`);
+    }
 }
