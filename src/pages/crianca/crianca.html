@@ -1,9 +1,12 @@
-<ion-header>
-  <ion-navbar>
-    <ion-title>Crianca</ion-title>
-  </ion-navbar>
-</ion-header>
-
 <ion-content padding>
+    <style>
+        
+      </style>
 
+  <form [formGroup]="formCrianca">
+    <ion-input type="text" formControlName="nome" placeholder="Nome completo"></ion-input>
+    <br>
+    <ion-input type="date" formControlName="dataNascimento" placeholder="dataNascimento"></ion-input>
+    <br>
+  </form>
 </ion-content>

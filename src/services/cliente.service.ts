@@ -19,6 +19,6 @@ export class ClienteService{
     }
 
     findByEmail(email: string){ 
-       return this.http.get<Cliente>(`${API_CONFIG.baseUrl}/clientes/fetch/${email}`);
+       return this.http.get<Cliente>(`${API_CONFIG.baseUrl}/clientes/email?value=${email}`);
     }
 }

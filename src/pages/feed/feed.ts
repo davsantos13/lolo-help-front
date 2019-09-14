@@ -8,14 +8,17 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class FeedPage {
 
+  clienteid = this.navParams.get('cli');
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
+    
   }
 
   signupCrianca(){
-    this.navCtrl.push('CriancaPage', )
+    this.navCtrl.push('CriancaPage')
   }
 
 }
