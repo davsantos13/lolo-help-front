@@ -1,12 +1,11 @@
 <ion-content padding>
-    <style>
-        
-      </style>
-
   <form [formGroup]="formCrianca">
     <ion-input type="text" formControlName="nome" placeholder="Nome completo"></ion-input>
     <br>
-    <ion-input type="date" formControlName="dataNascimento" placeholder="dataNascimento"></ion-input>
+    <ion-datetime displayFormat="DD/MM/YYYY" placeholder="Selecione a data"></ion-datetime>
     <br>
+    <button ion-button round block (click)="chooseAlergias()">Alergias</button>
+    <br>
+    <button ion-button round block (click)="chooseAlimentos()">Alimentos não permitidos</button>
   </form>
 </ion-content>
