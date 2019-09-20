@@ -11,8 +11,8 @@ export class CriancaService {
 
     }
 
-    insert(crianca: any){
-        return this.http.post(`${API_CONFIG.baseUrl}/criancas`, crianca,
+    insert(crianca: any, id: any){
+        return this.http.post(`${API_CONFIG.baseUrl}/criancas/${id}`, crianca,
         {
             observe: 'response',
             responseType: 'text'

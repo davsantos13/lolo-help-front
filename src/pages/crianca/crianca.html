@@ -1,11 +1,33 @@
 <ion-content padding>
-  <form [formGroup]="formCrianca">
-    <ion-input type="text" formControlName="nome" placeholder="Nome completo"></ion-input>
+
+  <img src="../../assets/imgs/blank.svg" alt="Image by Stephanie Edwards from Pixabay">
+  <ion-col>
     <br>
-    <ion-datetime displayFormat="DD/MM/YYYY" placeholder="Selecione a data"></ion-datetime>
+    <button ion-button round block (click)="chooseAlergias()">Tipo de Alergias</button>
     <br>
-    <button ion-button round block (click)="chooseAlergias()">Alergias</button>
-    <br>
-    <button ion-button round block (click)="chooseAlimentos()">Alimentos não permitidos</button>
+    <button ion-button round block (click)="chooseAlimentos()">Alimentos não
+      permitidos</button>
+  </ion-col>
+  <form [formGroup]="formCrianca" (ngSubmit)="signUpCrianca(); $event.preventDefault()">
+    <ion-col>
+      <ion-input type="text" formControlName="nome" placeholder="Nome completo"></ion-input>
+      <br>
+      <ion-datetime displayFormat="DD/MM/YYYY" placeholder="Selecione a data" formControlName="dataNascimento">
+      </ion-datetime>
+      <br>
+      <ion-datetime displayFormat="HH:mm A" placeholder="Pode ficar acordado até" formControlName="horaMaxima">
+      </ion-datetime>
+      <br><br>
+      <ion-label style="color: white">Conte-nos mais sobre seu filho : </ion-label>
+      <br>
+      <div class="animated bounceInRight" #divArea>
+        <ion-textarea style="height: 400px;padding-top: 10px" rows="15" cols="40" formControlName="descricao">
+        </ion-textarea>
+      </div>
+      <br><br>
+      <div class="animated bounceInRight" #divButton>
+        <button ion-button round block type="submit">Registrar</button>
+      </div>
+    </ion-col>
   </form>
 </ion-content>

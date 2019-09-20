@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import {HttpClient} from "@angular/common/http";
 import { Cliente } from "../domain/cliente";
 import { API_CONFIG } from "../config/api.config";
+import { Observable } from "rxjs";
 
 @Injectable()
 export class ClienteService{
@@ -18,7 +19,7 @@ export class ClienteService{
         });
     }
 
-    findByEmail(email: string){ 
+    findByEmail(email: string): Observable<Cliente>{ 
        return this.http.get<Cliente>(`${API_CONFIG.baseUrl}/clientes/email?value=${email}`);
     }
 }

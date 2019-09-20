@@ -1,6 +1,11 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { StorageService } from '../../services/storage.service';
+import { LocalUser } from '../../domain/local_user';
+import { ClienteService } from '../../services/cliente.service';
+import { Cliente } from '../../domain/cliente';
+import { CriancaService } from '../../services/crianca.service';
 
 @IonicPage()
 @Component({
@@ -10,20 +15,36 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 export class CriancaPage {
 
   formCrianca: FormGroup;
+  user: LocalUser = {
+    token: "",
+    email: ""
+  };
+
+  cliente: Cliente;
 
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
     public formBuilder: FormBuilder,
-    public alertCtrl: AlertController) {
+    public alertCtrl: AlertController,
+    public storage: StorageService,
+    public clienteService: ClienteService,
+    public criancaService: CriancaService) {
 
       this.formCrianca = this.formBuilder.group({
         nome: [null],
         dataNascimento: [null],
         alergias: [null],
         alimentos:[null],
-        horaMaxima:[null]
+        horaMaxima:[null],
+        descricao:[null]
       });
+  }
+
+  ionViewDidLoad(){
+    this.findPais();
+
+    console.log(this.cliente);
   }
 
   chooseAlergias(){
@@ -44,6 +65,11 @@ export class CriancaPage {
           type: 'checkbox',
           label: 'Contatos com a pele',
           value: 'Contato'
+        },
+        {
+          type: 'checkbox',
+          label: 'Outros',
+          value: 'Outros'
         }
       ],
       buttons: [
@@ -125,6 +151,28 @@ export class CriancaPage {
       ]
     });
     alertAlimentos.present();
+  }
+
+  findPais(){
+    this.user = this.storage.getLocalUser();
+    console.log(this.user);
+    this.clienteService.findByEmail(this.user.email)
+                 .subscribe(response => {
+                    this.cliente = response as Cliente;
+                    console.log(this.cliente);
+                 }, error => {
+
+                 });
+  }
+
+  signUpCrianca(){
+    console.log(this.formCrianca.value)
+    this.criancaService.insert(this.formCrianca.value, this.cliente.id)
+                        .subscribe(response => {
+                          console.log(response);
+                        }, error => {
+
+                        });
   }
 
 }

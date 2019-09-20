@@ -13,6 +13,8 @@ import { ErrorInterceptorProvider } from '../interceptors/error-interceptor';
 import { AuthService } from '../services/auth.service';
 import { StorageService } from '../services/storage.service';
 import { AuthInterceptorProvider } from '../interceptors/auth-interceptor';
+import { CriancaService } from '../services/crianca.service';
+import { BabaService } from '../services/baba.service';
 
 @NgModule({
   declarations: [
@@ -32,6 +34,8 @@ import { AuthInterceptorProvider } from '../interceptors/auth-interceptor';
     SplashScreen,
     CepService,
     ClienteService,
+    CriancaService,
+    BabaService,
     AuthInterceptorProvider,
     ErrorInterceptorProvider,
     AuthService,
