@@ -59,6 +59,7 @@ export class SignupPage {
       title: "Sucesso",
       message: "Cadastro efetuado com sucesso",
       enableBackdropDismiss: false,
+      cssClass: 'alert-success',
       buttons: [
         {
           text: "OK",

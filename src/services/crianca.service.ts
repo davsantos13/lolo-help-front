@@ -20,7 +20,11 @@ export class CriancaService {
     }
 
     findById(id: number){
-        return this.http.get(`${API_CONFIG.baseUrl}/criancas/${id}`);
+        return this.http.get(`${API_CONFIG.baseUrl}/criancas/identificador?value=${id}`);
+    }
+
+    findByCliente(id: any){
+        return this.http.get(`${API_CONFIG.baseUrl}/criancas/id?value=${id}`);
     }
 
 

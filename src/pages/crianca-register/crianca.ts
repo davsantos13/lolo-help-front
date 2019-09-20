@@ -80,14 +80,15 @@ export class CriancaPage {
             this.formCrianca.controls['alergias'].setValue(dados);
           }
         }
-      ]
+      ],
+      cssClass: 'alert-success'
     });
     alertAlergia.present();
   }
 
   chooseAlimentos(){
     let alertAlimentos = this.alertCtrl.create({
-      subTitle: 'Cateogoria',
+      subTitle: 'Categoria',
       inputs: [
         {
           type: 'checkbox',
@@ -148,7 +149,8 @@ export class CriancaPage {
             this.formCrianca.controls['alimentos'].setValue(dados);
           }
         }
-      ]
+      ],
+      cssClass: 'alert-success'
     });
     alertAlimentos.present();
   }
@@ -170,9 +172,24 @@ export class CriancaPage {
     this.criancaService.insert(this.formCrianca.value, this.cliente.id)
                         .subscribe(response => {
                           console.log(response);
+                          this.successSignupCrianca();
                         }, error => {
 
                         });
+  }
+
+  successSignupCrianca(){
+    let alertSignUp = this.alertCtrl.create({
+      title: 'Sucesso!',
+      subTitle: 'Criança cadastrada com sucesso',
+      buttons: [{
+        text: 'OK',
+        handler: () => {
+          this.navCtrl.push('CriancasPage', {cli: this.cliente.id});
+        }
+      }]
+    });
+    alertSignUp.present();
   }
 
 }

@@ -67,3 +67,39 @@ ion-datetime {
 .datetime {
   padding-left : 20px;
 }
+
+ 
+ion-alert {
+  &.alert-warning {
+    .alert-head {
+      background: map-get($colors, warning);
+      color: #fff;
+      margin-bottom: 10px;
+    }
+    .alert-wrapper {
+      border-radius: 30px;
+    }
+  }
+  &.alert-danger {
+    .alert-head {
+      background: map-get($colors, danger);
+      color: rgb(143, 11, 11);
+      margin-bottom: 10px;
+    }
+    .alert-wrapper {
+      border-radius: 30px;
+    }
+  }
+  &.alert-success {
+    .alert-head {
+      background: map-get($colors, primary);
+      color: rgb(255, 255, 255);
+      margin-bottom: 10px;
+    }
+    .alert-wrapper {
+      border-radius: 30px;
+    }
+  }
+
+}
+

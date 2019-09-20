@@ -3,7 +3,7 @@ import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent, HTTP_INTERCEPTORS
 import { Observable } from "rxjs/Rx";
 import { catchError } from "rxjs/operators";
 import { StorageService } from "../services/storage.service";
-import { AlertController } from "ionic-angular";
+import { AlertController, NavController } from "ionic-angular";
 
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor{
@@ -50,15 +50,27 @@ export class ErrorInterceptor implements HttpInterceptor{
             enableBackdropDismiss: false,
             buttons: [{
                 text: 'OK'
-            }]
+            }],
+            cssClass: 'alert-danger'
         });
-
         alert.present();
     }
 
 
     handle403(){
-        this.storage.setLocalUser(null);
+        let alertForbidden = this.alertCtrl.create({
+            title: 'OPS: SEM PERMISSÃO',
+            message: 'Atividade não permitida',
+            enableBackdropDismiss: false,
+            buttons: [{
+                text: 'OK',
+                handler: () => {
+                    this.storage.setLocalUser(null);
+                }
+            }], 
+            cssClass: 'alert-danger'
+        });
+        alertForbidden.present();
     }
 }
 

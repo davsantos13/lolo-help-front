@@ -1,0 +1,16 @@
+<ion-content padding>
+  <ion-card>
+    <ion-card-header>
+      {{crianca.nome}}
+    </ion-card-header>
+    <ion-card-content>
+      <p>Data de aniversário : {{crianca.dataNascimento | date :  "dd.MM.y"}}</p>
+      <br>
+      <ion-list>
+        <ion-item *ngFor="let alergia of crianca.alergias"> 
+          <p>{{alergia}}</p>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
