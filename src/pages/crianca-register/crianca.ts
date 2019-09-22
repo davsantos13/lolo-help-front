@@ -187,7 +187,8 @@ export class CriancaPage {
         handler: () => {
           this.navCtrl.push('CriancasPage', {cli: this.cliente.id});
         }
-      }]
+      }],
+      cssClass: 'alert-success'
     });
     alertSignUp.present();
   }
