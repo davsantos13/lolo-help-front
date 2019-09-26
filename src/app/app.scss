@@ -39,6 +39,16 @@ ion-datetime {
   color: lightyellow;
 }
 
+ion-icon {
+  color: white;
+}
+
+
+.toolbar-background {
+  border-radius: 20px;
+  background-color: #67CBE6;
+}
+
 
 .button {
   position: static;
@@ -100,6 +110,7 @@ ion-alert {
       border-radius: 30px;
     }
   }
+
 
 }
 
