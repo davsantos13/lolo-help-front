@@ -181,7 +181,7 @@ export class CriancaPage {
   successSignupCrianca(){
     let alertSignUp = this.alertCtrl.create({
       title: 'Sucesso!',
-      subTitle: 'Criança cadastrada com sucesso',
+      message: 'Criança cadastrada com sucesso',
       buttons: [{
         text: 'OK',
         handler: () => {
