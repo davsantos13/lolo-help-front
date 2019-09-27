@@ -185,7 +185,7 @@ export class CriancaPage {
       buttons: [{
         text: 'OK',
         handler: () => {
-          this.navCtrl.push('CriancasPage', {cli: this.cliente.id});
+          this.navCtrl.setRoot('CriancasPage', {cli: this.cliente.id});
         }
       }],
       cssClass: 'alert-success'
