@@ -22,25 +22,35 @@ export class LoginPage {
   };
 
   constructor(
-    public navCtrl: NavController, 
+    public navCtrl: NavController,
     public navParams: NavParams,
     public auth: AuthService,
     public clienteService: ClienteService) {
   }
 
-  login(){
+  login() {
     this.auth.authenticate(this.credenciais)
-    .subscribe(response => {
-      this.auth.successfulLogin(response.headers.get('Authorization'));
-      this.clienteService.findByEmail(this.credenciais.email)
-                         .subscribe(response => {
-                            console.log(response);
-                            this.cliente = response;
-                            this.navCtrl.setRoot('FeedPage', {cli: this.cliente.id});
-                         });
-    }, error => {
-      
-    });
+      .subscribe(response => {
+        this.auth.successfulLogin(response.headers.get('Authorization'));
+        this.loadCliente();
+      }, error => {
+
+      });
+  }
+
+  loadCliente() {
+    this.clienteService.findByEmail(this.credenciais.email)
+      .subscribe(response => {
+        console.log(response);
+        this.cliente = response;
+
+        if (this.cliente.firstTimeLogin == true) {
+          this.navCtrl.setRoot('FeedPage', { cli: this.cliente.id });
+        } else {
+          this.navCtrl.setRoot('CriancasPage', { cli: this.cliente.id});
+        }
+
+      });
   }
 
 }

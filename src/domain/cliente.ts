@@ -7,4 +7,5 @@ export interface Cliente{
     idLegal: string;
     telefones: string[];
     endereco: Endereco;
+    firstTimeLogin: boolean;
 }

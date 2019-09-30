@@ -5,15 +5,19 @@ import { API_CONFIG } from "../config/api.config";
 import { LocalUser } from "../domain/local_user";
 import { StorageService } from "./storage.service";
 import { JwtHelper } from "angular2-jwt";
+import { ClienteService } from "./cliente.service";
+import { Cliente } from "../domain/cliente";
 
 @Injectable()
 export class AuthService {
 
+    cliente: Cliente;
     jwtHelper: JwtHelper = new JwtHelper();
 
     constructor(
         public http: HttpClient,
-        public storage: StorageService){
+        public storage: StorageService,
+        public clienteService: ClienteService){
 
     }
 
@@ -33,6 +37,17 @@ export class AuthService {
             email: this.jwtHelper.decodeToken(tok).sub
         };
         this.storage.setLocalUser(user);
+
+        this.clienteService.findByEmail(user.email)
+            .subscribe(response => {
+                this.cliente = response as Cliente;
+                this.cliente.firstTimeLogin = false;
+                console.log(this.cliente);
+                this.clienteService.update(this.cliente)
+                    .subscribe(response => {
+                        console.log('cliente atualizado');
+                    });
+            });
     }
 
     logout(){
