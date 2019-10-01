@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ViewController, MenuController } from 'ionic-angular';
 import { Credenciais } from '../../domain/credenciais';
 import { AuthService } from '../../services/auth.service';
 import { StorageService } from '../../services/storage.service';
@@ -23,9 +23,18 @@ export class LoginPage {
 
   constructor(
     public navCtrl: NavController,
+    public menu: MenuController,
     public navParams: NavParams,
     public auth: AuthService,
     public clienteService: ClienteService) {
+  }
+
+  ionViewWillEnter() {
+    this.menu.swipeEnable(false);
+  }
+
+  ionViewWillLeave() {
+    this.menu.swipeEnable(true);
   }
 
   login() {
@@ -47,7 +56,7 @@ export class LoginPage {
         if (this.cliente.firstTimeLogin == true) {
           this.navCtrl.setRoot('FeedPage', { cli: this.cliente.id });
         } else {
-          this.navCtrl.setRoot('CriancasPage', { cli: this.cliente.id});
+          this.navCtrl.setRoot('CriancasPage', { cli: this.cliente.id });
         }
 
       });

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, IonicPage } from 'ionic-angular';
+import { NavController, IonicPage, MenuController } from 'ionic-angular';
 import { SignupPage } from '../signup/signup';
 
 @IonicPage()
@@ -9,15 +9,25 @@ import { SignupPage } from '../signup/signup';
 })
 export class HomePage {
 
-  constructor(public navCtrl: NavController) {
+  constructor(
+    public navCtrl: NavController,
+    public menu: MenuController) {
 
   }
 
-  showPageSignUp(){
+  ionViewWillEnter() {
+    this.menu.swipeEnable(false);
+  }
+
+  ionViewWillLeave() {
+    this.menu.swipeEnable(true);
+  }
+
+  showPageSignUp() {
     this.navCtrl.push('SignupPage');
   }
 
-  showPageLogin(){
+  showPageLogin() {
     this.navCtrl.push('LoginPage');
   }
 

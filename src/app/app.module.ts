@@ -15,6 +15,7 @@ import { StorageService } from '../services/storage.service';
 import { AuthInterceptorProvider } from '../interceptors/auth-interceptor';
 import { CriancaService } from '../services/crianca.service';
 import { BabaService } from '../services/baba.service';
+import { AgendamentoService } from '../services/agendamento.service';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { BabaService } from '../services/baba.service';
     ClienteService,
     CriancaService,
     BabaService,
+    AgendamentoService,
     AuthInterceptorProvider,
     ErrorInterceptorProvider,
     AuthService,

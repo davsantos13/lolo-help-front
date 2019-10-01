@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title style="text-align: center">Agendamentos</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <div *ngIf="agendamentos">
+    <ion-list>
+      <ion-card *ngFor="let agendamento of agendamentos">
+        <ion-card-header>
+          <h2 style="font-weight: bold; text-align: center">{{agendamento.descricao}}</h2>
+        </ion-card-header>
+        <ion-card-content>
+          Aqui a data
+        </ion-card-content>
+      </ion-card>,
+    </ion-list>
+  </div>
+  <div *ngIf="!agendamentos">
+    <ion-list>
+      <ion-card>
+        <ion-header>
+          <h2 id="noAgendamento" style="font-weight: bold; text-align: center">Você ainda não tem agendamentos</h2>
+        </ion-header>
+      </ion-card>
+    </ion-list>
+  </div>
+</ion-content>
