@@ -6,45 +6,49 @@ import { StorageService } from "../services/storage.service";
 import { AlertController } from "ionic-angular";
 
 @Injectable()
-export class ErrorInterceptor implements HttpInterceptor{
+export class ErrorInterceptor implements HttpInterceptor {
 
 
     constructor(
         public storage: StorageService,
-        public alertCtrl: AlertController){
+        public alertCtrl: AlertController) {
 
     }
 
-    intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>>{
+    intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         console.log('passou');
         return next.handle(req)
-        .pipe(
-            catchError(error => {
-                let errorObj = error;
-                if(errorObj.error){
-                    errorObj = errorObj.error;
-                }
-                console.log('Error detectado pelo interceptor');
-                console.log(errorObj);
+            .pipe(
+                catchError(error => {
+                    let errorObj = error;
+                    if (errorObj.error) {
+                        errorObj = errorObj.error;
+                    }
+                    console.log('Error detectado pelo interceptor');
+                    console.log(errorObj);
 
-                let status = error.status;
+                    let status = error.status;
 
-                switch(status){
-                    case 401:
-                        this.handle401();
-                        break;
+                    switch (status) {
+                        case 401:
+                            this.handle401();
+                            break;
 
-                    case 403:
-                        this.handle403();
-                        break;
-                }
+                        case 403:
+                            this.handle403();
+                            break;
 
-                return Observable.throw(errorObj);
-            })
-        ) as any;
+                        default:
+                            this.handleDefaultError(errorObj);
+                            break;
+                    }
+
+                    return Observable.throw(errorObj);
+                })
+            ) as any;
     }
 
-    handle401(){
+    handle401() {
         let alert = this.alertCtrl.create({
             title: 'OPS: FALHA DE AUTENTICAÇÃO',
             message: 'Email ou senha incorretos',
@@ -58,7 +62,7 @@ export class ErrorInterceptor implements HttpInterceptor{
     }
 
 
-    handle403(){
+    handle403() {
         let alertForbidden = this.alertCtrl.create({
             title: 'OPS: SEM PERMISSÃO',
             message: 'Atividade não permitida',
@@ -68,15 +72,28 @@ export class ErrorInterceptor implements HttpInterceptor{
                 handler: () => {
                     this.storage.setLocalUser(null);
                 }
-            }], 
+            }],
             cssClass: 'alert-danger'
         });
         alertForbidden.present();
+    }
+
+    handleDefaultError(erroObj) {
+        let alert = this.alertCtrl.create({
+            title: 'Erro ' + erroObj.status + ' : ' + erroObj.error,
+            message: erroObj.error,
+            enableBackdropDismiss: false,
+            buttons: [{
+                text: 'OK'
+            }],
+            cssClass: 'alert-danger'
+        });
+        alert.present();
     }
 }
 
 export const ErrorInterceptorProvider = {
     provide: HTTP_INTERCEPTORS,
     useClass: ErrorInterceptor,
-    multi: true,      
+    multi: true,
 };

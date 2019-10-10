@@ -9,13 +9,13 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { HttpClientModule } from '@angular/common/http';
 import { CepService } from '../services/cep.service';
 import { ClienteService } from '../services/cliente.service';
-import { ErrorInterceptorProvider } from '../interceptors/error-interceptor';
 import { AuthService } from '../services/auth.service';
 import { StorageService } from '../services/storage.service';
 import { AuthInterceptorProvider } from '../interceptors/auth-interceptor';
 import { CriancaService } from '../services/crianca.service';
 import { BabaService } from '../services/baba.service';
 import { AgendamentoService } from '../services/agendamento.service';
+import { ErrorInterceptor } from '../interceptors/error-interceptor';
 
 @NgModule({
   declarations: [
@@ -39,9 +39,9 @@ import { AgendamentoService } from '../services/agendamento.service';
     BabaService,
     AgendamentoService,
     AuthInterceptorProvider,
-    ErrorInterceptorProvider,
     AuthService,
     StorageService,
+    ErrorInterceptor,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

@@ -49,7 +49,7 @@ export class CriancaPage {
 
   chooseAlergias(){
     let alertAlergia = this.alertCtrl.create({
-      subTitle: 'Alegias',
+      subTitle: 'Alergias',
       inputs: [
         {
           type: 'checkbox',
