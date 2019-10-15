@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, ElementRef, Renderer2 } from '@angular/core';
 import { IonicPage, NavController, NavParams, ViewController, MenuController } from 'ionic-angular';
 import { Credenciais } from '../../domain/credenciais';
 import { AuthService } from '../../services/auth.service';
@@ -14,6 +14,7 @@ import { Cliente } from '../../domain/cliente';
 })
 export class LoginPage {
 
+  @ViewChild('divEmail') divEmail: ElementRef;
   cliente: Cliente;
 
   credenciais: Credenciais = {
@@ -26,7 +27,8 @@ export class LoginPage {
     public menu: MenuController,
     public navParams: NavParams,
     public auth: AuthService,
-    public clienteService: ClienteService) {
+    public clienteService: ClienteService,
+    public renderer: Renderer2) {
   }
 
   ionViewWillEnter() {
@@ -35,6 +37,14 @@ export class LoginPage {
 
   ionViewWillLeave() {
     this.menu.swipeEnable(true);
+  }
+
+  changeClass(){
+    this.renderer.removeClass(this.divEmail.nativeElement, 'animated');
+  }
+
+  signup(){
+    this.navCtrl.push('SignupPage');
   }
 
   login() {

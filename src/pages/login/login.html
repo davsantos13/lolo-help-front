@@ -3,17 +3,23 @@
   <img src="assets/imgs/gabarito 2.png">
   <form>
     <div class="container">
-      <div>
-        <ion-input class="animated bounceInLeft" style="width: 350px" type="text" placeholder="Email" [(ngModel)]="credenciais.email" name="email"></ion-input>
+      <div class="animated bounceInLeft" #divEmail>
+        <ion-input style="width: 350px" type="text" placeholder="Email" [(ngModel)]="credenciais.email" name="email"
+          (ionFocus)="changeClass()"></ion-input>
       </div>
       <div><br></div>
-      <div>
-        <ion-input class="animated bounceInRight" style="width: 350px" type="password" placeholder="Senha" [(ngModel)]="credenciais.senha" name="senha"></ion-input>
+      <div class="animated bounceInRight">
+        <ion-input style="width: 350px" type="password" placeholder="Senha" [(ngModel)]="credenciais.senha" name="senha"
+          (ionFocus)="changeClass()"></ion-input>
       </div>
-
-       <button style=" color: #67CBE6;
-       font-size: 100%;" ion-button block round color="light" (click) = "login()">Entrar</button>
-      
     </div>
+    <button style=" color: #67CBE6;
+       font-size: 100%;" ion-button block round color="light" (click)="login()">Entrar</button>
   </form>
+  <br><br><br>
+  <div>
+    <p style="font-size: small; text-align: center; color: white;">Ainda não tem uma conta ? Cadastre-se</p>
+    <button style=" color: #67CBE6;
+  font-size: 70%; height: 30px;" ion-button block round color="light" (click)="signup()">Cadastre-se</button>
+  </div>
 </ion-content>
