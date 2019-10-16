@@ -20,7 +20,16 @@ ion-content{
     background: #67CBE6 !important;
 }
 
-ion-item {
+.item-md.item-block .item-inner {
+  border-bottom: 0px;
+}
+
+.item-md {
+  background: #67CBE6;
+  border-bottom: 0px;
+}
+
+.item-ios {
   background: #67CBE6;
 }
 

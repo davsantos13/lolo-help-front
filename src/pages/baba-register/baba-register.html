@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>BabaRegister</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <form [formGroup]="formBaba" (ngSubmit)="singupBaba(); $event.preventDefault()">
+    <ion-item>
+      <ion-label style="color: white;">Tem passaporte ?</ion-label>
+      <ion-toggle formControlName="passaporte"></ion-toggle>
+    </ion-item>
+    <br>
+    <div formGroupName="idiomas">
+      <ion-item>
+        <ion-label style="color: white;">Idiomas</ion-label>
+        <ion-select formControlName="descricao">
+          <ion-option *ngFor="let idioma of idiomas; first as f" [value]="idioma" [selected]="f">{{idioma}}</ion-option>
+        </ion-select>
+      </ion-item>
+    </div>
+  </form>
+</ion-content>
