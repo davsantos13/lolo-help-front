@@ -1,8 +1,14 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>BabaRegister</ion-title>
+    <button ion-button menuToggle>
+      <ion-icon style="color: white" name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      <span style="color: white">Nova Babá</span>
+    </ion-title>
   </ion-navbar>
 </ion-header>
+
 
 <ion-content padding>
   <form [formGroup]="formBaba" (ngSubmit)="singupBaba(); $event.preventDefault()">
@@ -14,7 +20,7 @@
     <div formGroupName="idiomas">
       <ion-item>
         <ion-label style="color: white;">Idiomas</ion-label>
-        <ion-select formControlName="descricao">
+        <ion-select multiple="tr" formControlName="descricao">
           <ion-option *ngFor="let idioma of idiomas; first as f" [value]="idioma" [selected]="f">{{idioma}}</ion-option>
         </ion-select>
       </ion-item>

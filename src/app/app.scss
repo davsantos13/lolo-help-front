@@ -1,6 +1,5 @@
 // http://ionicframework.com/docs/theming/
 
-
 // App Global Sass
 // --------------------------------------------------
 // Put style rules here that you want to apply globally. These
@@ -15,9 +14,9 @@
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
 
-ion-content{
-    font-size: 1.8rem;
-    background: #67CBE6 !important;
+ion-content {
+  font-size: 1.8rem;
+  background: #67cbe6 !important;
 }
 
 .item-md.item-block .item-inner {
@@ -25,26 +24,26 @@ ion-content{
 }
 
 .item-md {
-  background: #67CBE6;
+  background: #67cbe6;
   border-bottom: 0px;
 }
 
 .item-ios {
-  background: #67CBE6;
+  background: #67cbe6;
 }
 
 ion-input {
-  background: #67CBE6;
+  background: #67cbe6;
   border-radius: 20px;
-  border:3px solid lightyellow;
+  border: 3px solid lightyellow;
   color: lightyellow;
   padding-left: 20px;
 }
 
 ion-datetime {
-  background: #67CBE6;
+  background: #67cbe6;
   border-radius: 20px;
-  border:3px solid lightyellow;
+  border: 3px solid lightyellow;
   color: lightyellow;
 }
 
@@ -52,11 +51,10 @@ ion-icon {
   color: white;
 }
 
-
 .toolbar-background {
   border-bottom-left-radius: 15px;
   border-bottom-right-radius: 15px;
-  background-color: #67CBE6;
+  background-color: #67cbe6;
 }
 
 
@@ -71,30 +69,27 @@ ion-icon {
   border-radius: 20px;
 }
 
-
-
 .text-input::-moz-placeholder {
-    color: white;
-  }
-  
-.text-input:-ms-input-placeholder {
-    color: white;
-  }
-  
-.text-input::-webkit-input-placeholder {
-    text-indent: 0;
-    color: white;
-  }
+  color: white;
+}
 
-.datetime-md .datetime-placeholder { 
-  color: white; 
+.text-input:-ms-input-placeholder {
+  color: white;
+}
+
+.text-input::-webkit-input-placeholder {
+  text-indent: 0;
+  color: white;
+}
+
+.datetime-md .datetime-placeholder {
+  color: white;
 }
 
 .datetime {
-  padding-left : 20px;
+  padding-left: 20px;
 }
 
- 
 ion-alert {
   &.alert-warning {
     .alert-head {
@@ -126,7 +121,26 @@ ion-alert {
       border-radius: 30px;
     }
   }
-
-
 }
 
+.alert-md {
+  .alert-head {
+    background: map-get($colors, primary);
+    color: rgb(255, 255, 255);
+    margin-bottom: 10px;
+  }
+  .alert-wrapper {
+    border-radius: 20px;
+  }
+}
+
+.alert-ios {
+  .alert-head {
+    background: map-get($colors, primary);
+    color: rgb(255, 255, 255);
+    margin-bottom: 10px;
+  }
+  .alert-wrapper {
+    border-radius: 20px;
+  }
+}
