@@ -1,4 +1,4 @@
-<ion-header>
+<ion-header translucent>
   <ion-navbar>
     <button ion-button menuToggle>
       <ion-icon style="color: white" name="menu"></ion-icon>
@@ -9,9 +9,9 @@
   </ion-navbar>
 </ion-header>
 
-
 <ion-content padding>
   <form [formGroup]="formBaba" (ngSubmit)="singupBaba(); $event.preventDefault()">
+    <div><br><br><br></div>
     <ion-item>
       <ion-label style="color: white;">Tem passaporte ?</ion-label>
       <ion-toggle formControlName="passaporte"></ion-toggle>

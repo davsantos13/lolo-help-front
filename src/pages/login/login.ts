@@ -39,11 +39,11 @@ export class LoginPage {
     this.menu.swipeEnable(true);
   }
 
-  changeClass(){
+  changeClass() {
     this.renderer.removeClass(this.divEmail.nativeElement, 'animated');
   }
 
-  signup(){
+  signup() {
     this.navCtrl.push('SignupPage');
   }
 
@@ -65,9 +65,20 @@ export class LoginPage {
 
         if (this.cliente.firstTimeLogin == true) {
           this.navCtrl.setRoot('FeedPage', { cli: this.cliente.id });
+          this.cliente.firstTimeLogin = false;
+          this.clienteService.update(this.cliente)
+            .subscribe(response => {
+              console.log('cliente atualizado');
+              console.log(response);
+            }, error => {
+
+            });
         } else {
           this.navCtrl.setRoot('CriancasPage', { cli: this.cliente.id });
         }
+
+
+      }, error => {
 
       });
   }

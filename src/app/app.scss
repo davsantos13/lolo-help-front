@@ -52,12 +52,15 @@ ion-icon {
 }
 
 .toolbar-background {
-  border-bottom-left-radius: 15px;
-  border-bottom-right-radius: 15px;
-  background-color: #67cbe6;
+  
+  background-color: #50a6fb;
 }
 
-
+ion-navbar {
+  position: inherit;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
 
 .button {
   position: static;

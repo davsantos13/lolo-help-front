@@ -37,17 +37,6 @@ export class AuthService {
             email: this.jwtHelper.decodeToken(tok).sub
         };
         this.storage.setLocalUser(user);
-
-        this.clienteService.findByEmail(user.email)
-            .subscribe(response => {
-                this.cliente = response as Cliente;
-                this.cliente.firstTimeLogin = false;
-                console.log(this.cliente);
-                this.clienteService.update(this.cliente)
-                    .subscribe(response => {
-                        console.log('cliente atualizado');
-                    });
-            });
     }
 
     logout(){

@@ -6,7 +6,7 @@ import { MyApp } from './app.component';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { CepService } from '../services/cep.service';
 import { ClienteService } from '../services/cliente.service';
 import { AuthService } from '../services/auth.service';
@@ -42,7 +42,12 @@ import { ErrorInterceptor } from '../interceptors/error-interceptor';
     AuthService,
     StorageService,
     ErrorInterceptor,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ErrorInterceptor,
+      multi: true,
+    },
+    { provide: ErrorHandler, useClass: IonicErrorHandler }
   ]
 })
-export class AppModule {}
+export class AppModule { }
