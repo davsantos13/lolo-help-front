@@ -22,27 +22,47 @@ export class CriancasPage {
     token: ""
   };
 
+
+
   constructor(
-    public navCtrl: NavController, 
+    public navCtrl: NavController,
     public navParams: NavParams,
     public storage: StorageService,
     public clienteService: ClienteService,
     public criancaService: CriancaService) {
   }
 
-  ionViewDidLoad(){
-    let id = this.navParams.get('cli');
-    this.criancaService.findByCliente(id)
-             .subscribe(response => {
-                this.criancas = response as Crianca[];
-                console.log(this.criancas);
-             }, error => {
+  ionViewDidLoad() {
+    this.findPais();
 
-             });
   }
 
-  criancaDetail(id: any){
-    this.navCtrl.push('CriancaDetailPage', {id: id});
+  findPais() {
+    this.user = this.storage.getLocalUser();
+    console.log(this.user);
+    return this.clienteService.findByEmail(this.user.email)
+      .subscribe(response => {
+        this.cliente = response as Cliente;
+        console.log(this.cliente);
+
+        this.criancaService.findByCliente(this.cliente.id)
+          .subscribe(response => {
+            this.criancas = response as Crianca[];
+            console.log(this.criancas);
+          }, error => {
+
+          });
+      }, error => {
+
+      });
+  }
+
+  criancaDetail(id: any) {
+    this.navCtrl.push('CriancaDetailPage', { id: this.cliente.id });
+  }
+
+  addChildren() {
+    this.navCtrl.push('CriancaPage');
   }
 
 }

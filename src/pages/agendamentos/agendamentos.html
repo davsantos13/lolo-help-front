@@ -1,11 +1,26 @@
 <ion-header>
   <ion-navbar>
-    <ion-title style="text-align: center">Agendamentos</ion-title>
+    <button ion-button menuToggle>
+      <ion-icon style="color: white" name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      <span style="color: white">Agendamentos</span>
+    </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
+
+  <ion-fab top right edge>
+    <div><br><br></div>
+    <button navPush="AgendamentoRegisterPage" ion-fab mini>
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-fab>
   <div><br><br><br></div>
+  <div style="width: 100%; height: 30px; border-bottom: 1px solid white; text-align: left;">
+    <span style="font-size: 25px; padding: 0 10px;color: white;">Últimos Agendamentos </span>
+  </div>
   <div *ngIf="agendamentos">
     <ion-list>
       <ion-card *ngFor="let agendamento of agendamentos">

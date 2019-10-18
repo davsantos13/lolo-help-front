@@ -3,18 +3,27 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
+    <ion-title>
+      <span style="color: white;">Crianças</span>
+    </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
   <div><br><br><br></div>
-  <ion-chip *ngFor="let crianca of criancas">
+  <ion-chip *ngFor="let crianca of criancas" class="animated bounceInLeft">
     <ion-avatar>
       <img src="../../assets/imgs/blank.svg">
     </ion-avatar>
     <ion-label>{{crianca.nome}}</ion-label>
-    <button ion-button clear color="dark" (click)="criancaDetail(crianca.id)">
+    <button ion-button clear block color="dark" (click)="criancaDetail(crianca.id)">
       <ion-icon name="arrow-round-forward"></ion-icon>
     </button>
   </ion-chip>
+
+  <ion-footer>
+    <button ion-button round (click)="addChildren()">
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-footer>
 </ion-content>
