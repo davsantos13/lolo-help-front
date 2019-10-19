@@ -58,7 +58,7 @@ export class CriancasPage {
   }
 
   criancaDetail(id: any) {
-    this.navCtrl.push('CriancaDetailPage', { id: this.cliente.id });
+    this.navCtrl.push('CriancaDetailPage', { id: id });
   }
 
   addChildren() {

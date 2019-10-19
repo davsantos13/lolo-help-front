@@ -1,6 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { ErrorHandler, NgModule } from '@angular/core';
+import { ErrorHandler, NgModule, LOCALE_ID } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
+import localePtBr from '@angular/common/locales/pt';
+import { registerLocaleData } from '@angular/common';
+
+registerLocaleData(localePtBr);
 
 import { MyApp } from './app.component';
 
@@ -16,6 +20,7 @@ import { CriancaService } from '../services/crianca.service';
 import { BabaService } from '../services/baba.service';
 import { AgendamentoService } from '../services/agendamento.service';
 import { ErrorInterceptor } from '../interceptors/error-interceptor';
+
 
 @NgModule({
   declarations: [
@@ -47,7 +52,8 @@ import { ErrorInterceptor } from '../interceptors/error-interceptor';
       useClass: ErrorInterceptor,
       multi: true,
     },
-    { provide: ErrorHandler, useClass: IonicErrorHandler }
+    { provide: ErrorHandler, useClass: IonicErrorHandler },
+    { provide: LOCALE_ID, useValue: "pt-BR" }
   ]
 })
 export class AppModule { }

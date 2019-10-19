@@ -8,7 +8,27 @@ import { Component } from "@angular/core";
 })
 export class DiariaPage {
 
-    constructor(public navCtrl: NavController, public navParams: NavParams){
+    eventSource = [];
+    calendar = {
+        mode: 'month',
+        currentDate: new Date()
+    }
+
+    constructor(
+        public navCtrl: NavController, 
+        public navParams: NavParams){
         
+    }
+
+    onEventSelected(){
+
+    }
+
+    onViewTitleChanged(){
+
+    }
+
+    onTimeSelected(){
+
     }
 }
