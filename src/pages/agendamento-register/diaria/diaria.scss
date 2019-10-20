@@ -16,4 +16,12 @@ page-diaria {
   .monthview-selected[_ngcontent-c1] {
       background-color: #50a6fb;
   }
+
+  .monthview-current[_ngcontent-c1] {
+    background-color: #50a6fb;
+  }
+
+  ion-label {
+    visibility: hidden;
+  }
 }
