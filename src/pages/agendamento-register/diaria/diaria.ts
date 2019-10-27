@@ -1,5 +1,6 @@
 import { IonicPage, NavController, NavParams } from "ionic-angular";
 import { Component } from "@angular/core";
+import { FormGroup, FormBuilder } from "@angular/forms";
 
 @IonicPage()
 @Component({
@@ -8,6 +9,7 @@ import { Component } from "@angular/core";
 })
 export class DiariaPage {
 
+    data: any;
     eventSource = [];
     calendar = {
         mode: 'month',
@@ -20,15 +22,27 @@ export class DiariaPage {
         
     }
 
-    onEventSelected(){
-        
+    onEventSelected(event){
+        console.log(event);
     }
 
-    onViewTitleChanged(){
-
+    onViewTitleChanged(event){
+        console.log(event);
     }
 
-    onTimeSelected(){
+    onTimeSelected(event){
+        this.data = event.selectedTime;
+        /* console.log(this.convert(this.data)); */
+    }
 
+    convert(str) {
+        var date = new Date(str),
+          mnth = ("0" + (date.getMonth() + 1)).slice(-2),
+          day = ("0" + date.getDate()).slice(-2);
+        return [date.getFullYear(), mnth, day].join("-");
+    }
+
+    nextPage(){
+        this.navCtrl.push('ViagemPage', {data: this.convert(this.data)});
     }
 }

@@ -9,4 +9,9 @@ import { Component } from "@angular/core";
 export class ViagemPage {
     constructor(public navCtrl: NavController, public navParams: NavParams) {
     }
+
+    ionViewDidLoad(){
+       console.log('A data: ',this.navParams.get('data'));
+
+    }
 }
